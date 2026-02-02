@@ -1,4 +1,6 @@
 # Ex-4 Rail-Fence-Program
+### Name: Rakesh K S
+### Reg No: 212224040264
 
 # IMPLEMENTATION OF RAIL FENCE – ROW & COLUMN TRANSFORMATION TECHNIQUE
 
@@ -19,7 +21,56 @@ STEP-4: Arrange the characters of the keyword in sorted order and the correspond
 STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
 
 # PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int main() {
+    char str[1000];
+    int rails, len;
+    int i, j;
+
+    printf("Enter a Secret Message:\n");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+
+    printf("Enter number of rails:\n");
+    scanf("%d", &rails);
+
+    len = strlen(str);
+    char rail[rails][len];
+    for (i = 0; i < rails; i++) {
+        for (j = 0; j < len; j++) {
+            rail[i][j] = '\n';
+        }
+    }
+    int row = 0;
+    int dir_down = 0; 
+
+    for (j = 0; j < len; j++) {
+        rail[row][j] = str[j];
+        if (row == 0)
+            dir_down = 1;
+        else if (row == rails - 1)
+            dir_down = 0;
+        row += dir_down ? 1 : -1;
+    }
+    printf("Encrypted Message: ");
+    for (i = 0; i < rails; i++) {
+        for (j = 0; j < len; j++) {
+            if (rail[i][j] != '\n')
+                printf("%c", rail[i][j]);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
+```
 
 # OUTPUT
 
+<img width="793" height="246" alt="image" src="https://github.com/user-attachments/assets/5058a8b1-81a9-476c-b834-ffde2b6dc892" />
+
 # RESULT
+Thus, the C program to implement the Rail Fence transposition technique was successfully executed and the encrypted message was obtained.
