@@ -1,4 +1,4 @@
-# Ex-4 Rail-Fence-Program
+# Ex-5 Rail-Fence-Program
 ### Name: Rakesh K S
 ### Reg No: 212224040264
 
